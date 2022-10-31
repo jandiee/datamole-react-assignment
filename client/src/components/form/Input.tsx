@@ -1,15 +1,18 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 import { InputProps } from "./types";
 
 const StyledInput = styled.input``;
 
-export const Input = (props: InputProps): JSX.Element => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ value, handleInputChange, ...props }, ref) => {
     return (
         <StyledInput
-            value={props.value}
+            ref={ref}
+            value={value}
             onChange={(e) => {
-                props.handleInputChange(e.currentTarget.value);
+                handleInputChange(e.currentTarget.value);
             }}
+            {...props}
         />
     );
-};
+});

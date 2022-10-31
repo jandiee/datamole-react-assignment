@@ -1,10 +1,12 @@
+import React from "react";
+
 export type FormProps = {
     handleSubmit: (data: string) => void;
     handleCancel: () => void;
     initialValue: string;
 };
 
-export type InputProps = {
+export type InputProps = React.HtmlHTMLAttributes<HTMLInputElement> & {
     value: FormProps["initialValue"];
     handleInputChange: (value: string) => void;
 };

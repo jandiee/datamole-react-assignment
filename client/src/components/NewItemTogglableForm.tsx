@@ -1,5 +1,6 @@
 import { PlusIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
+import Button from "./Button";
 import { Form } from "./form";
 import { ItemObjectType } from "./form/types";
 
@@ -28,9 +29,9 @@ const NewItemTogglableForm = ({ onItemAdded }: NewItemTogglableFormProps) => {
             {addingItem ? (
                 <Form handleSubmit={(data) => addItem(data)} handleCancel={() => toggleAddItem()} initialValue="" />
             ) : (
-                <button onClick={() => toggleAddItem()}>
+                <Button round onClick={() => toggleAddItem()}>
                     <PlusIcon />
-                </button>
+                </Button>
             )}
         </>
     );

@@ -12,12 +12,12 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root)`
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: ${(props) => `0 2px 10px ${props.theme.colors.blackA7}`};
+    box-shadow: ${(props) => `0 1px 3px 0 ${props.theme.colors.blackA7}`};
     &:hover {
         background-color: ${(props) => props.theme.colors.grass3};
     }
     &:focus {
-        box-shadow: 0 2px 10px black;
+        box-shadow: 0 4px 6px -1px black;
     }
 `;
 
