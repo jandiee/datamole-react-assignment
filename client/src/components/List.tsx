@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1;
 `;
 
 export const List: React.FC<PropsWithChildren> = ({ children }) => <StyledDiv>{children}</StyledDiv>;
