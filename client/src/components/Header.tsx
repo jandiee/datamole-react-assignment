@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { PlusIcon } from "@radix-ui/react-icons";
+import { ItemObjectType } from "./form/types";
+import NewItemTogglableForm from "./NewItemTogglableForm";
 
 export type HeaderProps = {
     children: React.ReactNode;
-    handleAddItem: () => void;
+    onItemAdded: (newItem: ItemObjectType) => void;
 };
 
 const StyledDiv = styled.header`
     display: flex;
+    justify-content: space-between;
     button {
         all: unset;
         border-radius: 50%;
@@ -21,11 +23,11 @@ const StyledDiv = styled.header`
     }
 `;
 
-export const Header: React.FC<HeaderProps> = ({ handleAddItem, children }) => (
-    <StyledDiv>
-        <h1>{children}</h1>
-        <button onClick={() => handleAddItem()}>
-            <PlusIcon />
-        </button>
-    </StyledDiv>
-);
+export const Header: React.FC<HeaderProps> = ({ onItemAdded, children }) => {
+    return (
+        <StyledDiv>
+            <h1>{children}</h1>
+            <NewItemTogglableForm onItemAdded={(newItem) => onItemAdded(newItem)} />
+        </StyledDiv>
+    );
+};

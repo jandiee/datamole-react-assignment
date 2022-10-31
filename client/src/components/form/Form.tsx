@@ -16,12 +16,14 @@ export const Form = (props: FormProps): JSX.Element => {
             onSubmit={(e) => {
                 e.preventDefault();
                 props.handleSubmit(data);
+                setData(props.initialValue);
             }}
             onReset={() => {
                 props.handleCancel();
+                setData(props.initialValue);
             }}
         >
-            <Input initialValue={props.initialValue} handleInputChange={(value: string) => setData(value)} />
+            <Input value={data} handleInputChange={(value: string) => setData(value)} />
             <button type={"submit"}>
                 <CheckIcon />
             </button>
