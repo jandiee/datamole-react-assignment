@@ -5,19 +5,28 @@ import { CheckboxProps } from "@radix-ui/react-checkbox";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import Button from "./Button";
 
-const StyledDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-
-const Label = styled.label``;
-
 const Flexbox = styled.div`
     display: flex;
     align-items: center;
     gap: 15px;
 `;
+
+const VisibleOnHoverFlexbox = styled(Flexbox)`
+    display: none;
+`;
+
+const StyledDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:hover {
+        ${VisibleOnHoverFlexbox} {
+            display: flex;
+        }
+    }
+`;
+
+const Label = styled.label``;
 
 export type LiteItemProp = CheckboxProps & {
     label: string;
@@ -31,13 +40,13 @@ export const ListItem: React.FC<LiteItemProp> = ({ label, handleRemoval, handleE
             <Checkbox {...checkboxProps} />
             <Label>{label}</Label>
         </Flexbox>
-        <Flexbox>
+        <VisibleOnHoverFlexbox>
             <Button onClick={() => handleEdit()}>
                 <TrashIcon />
             </Button>
             <Button onClick={() => handleRemoval()}>
                 <Pencil1Icon />
             </Button>
-        </Flexbox>
+        </VisibleOnHoverFlexbox>
     </StyledDiv>
 );
