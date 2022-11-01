@@ -1,7 +1,6 @@
-import React from "react";
+import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Form } from "../Form";
-import { action } from "@storybook/addon-actions";
 
 export default {
     title: "Form/Form",
@@ -14,5 +13,5 @@ export const Default = Template.bind({});
 Default.args = {
     initialValue: "",
     handleCancel: action("Form cancelled"),
-    handleSubmit: action("Submitted"),
+    handleSubmit: async () => action("Submitted")(),
 };

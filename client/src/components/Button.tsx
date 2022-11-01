@@ -10,11 +10,11 @@ const StyledButton = styled.button`
     cursor: pointer;
 `;
 
-const Button = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+export const DefaultButton = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
     return <StyledButton {...props}>{children}</StyledButton>;
 };
 
-export const RoundButton = styled(Button)`
+export const RoundButton = styled(DefaultButton)`
     border-radius: 50%;
     border: 1px solid;
     border-color: ${(props) => props.theme.colors.olive9};
@@ -24,4 +24,4 @@ export const RoundButton = styled(Button)`
     height: 28px;
 `;
 
-export const RectangleButton = styled(Button)``;
+export const RectangleButton = styled(DefaultButton)``;

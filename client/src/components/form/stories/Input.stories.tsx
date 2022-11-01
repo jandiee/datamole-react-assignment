@@ -1,4 +1,3 @@
-import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Input } from "../Input";
 
@@ -10,10 +9,9 @@ export default {
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-    initialValue: "",
-};
-export const WithInitialValue = Template.bind({});
-WithInitialValue.args = {
-    initialValue: "Lorem ipsum",
+Default.args = {};
+
+export const WithValue = Template.bind({});
+WithValue.args = {
+    value: "Lorem ipsum",
 };
