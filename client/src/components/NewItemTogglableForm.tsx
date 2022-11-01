@@ -15,7 +15,7 @@ const NewItemTogglableForm = ({ onItemAdded }: NewItemTogglableFormProps) => {
         setAddingItem((prev) => !prev);
     };
 
-    const addItem = async (data: string) => {
+    const addItem = async (data: string | undefined) => {
         const response = await fetch("http://localhost:3000/items", {
             method: "POST",
             body: JSON.stringify({ title: data, done: false }),
@@ -28,7 +28,7 @@ const NewItemTogglableForm = ({ onItemAdded }: NewItemTogglableFormProps) => {
     return (
         <>
             {addingItem ? (
-                <Form handleSubmit={(data) => addItem(data)} handleCancel={() => toggleAddItem()} initialValue="" />
+                <Form handleSubmit={(data) => addItem(data)} handleCancel={() => toggleAddItem()} />
             ) : (
                 <RoundButton onClick={() => toggleAddItem()}>
                     <PlusIcon />

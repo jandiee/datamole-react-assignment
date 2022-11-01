@@ -10,24 +10,24 @@ const StyledForm = styled.form`
     gap: 15px;
 `;
 
-export const Form = (props: FormProps): JSX.Element => {
-    const [data, setData] = useState(props.initialValue);
+export const Form = ({ initialValue, handleSubmit, handleCancel }: FormProps): JSX.Element => {
+    const [data, setData] = useState(initialValue || undefined);
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         focusInput();
     }, []);
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmitLocal = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await props.handleSubmit(data);
-        setData(props.initialValue);
+        await handleSubmit(data);
+        setData(initialValue);
         focusInput();
     };
 
     const handleReset = () => {
-        props.handleCancel();
-        setData(props.initialValue);
+        handleCancel();
+        setData(initialValue);
     };
 
     const focusInput = () => {
@@ -37,7 +37,7 @@ export const Form = (props: FormProps): JSX.Element => {
     };
 
     return (
-        <StyledForm onSubmit={(e) => handleSubmit(e)} onReset={() => handleReset()}>
+        <StyledForm onSubmit={(e) => handleSubmitLocal(e)} onReset={() => handleReset()}>
             <Input ref={inputRef} value={data} handleInputChange={(value: string) => setData(value)} />
             <RoundButton type={"submit"}>
                 <CheckIcon />

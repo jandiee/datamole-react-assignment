@@ -1,9 +1,9 @@
 import React from "react";
 
 export type FormProps = {
-    handleSubmit: (data: string) => Promise<void>;
+    handleSubmit: (data: string | undefined) => Promise<void>;
     handleCancel: () => void;
-    initialValue: string;
+    initialValue?: string;
 };
 
 export type InputProps = React.HtmlHTMLAttributes<HTMLInputElement> & {

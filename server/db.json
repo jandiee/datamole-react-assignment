@@ -36,76 +36,15 @@
       "finishedAt": 1667313305690
     },
     {
-      "title": "",
+      "title": "new todo",
       "done": false,
-      "createdAt": 1667314929903,
+      "createdAt": 1667315033060,
       "id": 29
     },
     {
-      "title": "",
       "done": false,
-      "createdAt": 1667314930020,
+      "createdAt": 1667315193333,
       "id": 30
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314930113,
-      "id": 31
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314930217,
-      "id": 32
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314930318,
-      "id": 33
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314930431,
-      "id": 34
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314930550,
-      "id": 35
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314930899,
-      "id": 36
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314931001,
-      "id": 37
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314931098,
-      "id": 38
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314931344,
-      "id": 39
-    },
-    {
-      "title": "",
-      "done": false,
-      "createdAt": 1667314931468,
-      "id": 40
     }
   ]
 }

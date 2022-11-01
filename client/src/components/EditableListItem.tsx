@@ -20,7 +20,7 @@ const EditableListItem = ({ item, onItemEdit, onItemDelete }: EditableListItemPr
         onItemDelete();
     };
 
-    const handleSubmit = async (data: string) => {
+    const handleSubmit = async (data: string | undefined) => {
         const response = await fetch(`http://localhost:3000/items/${item.id}`, {
             method: "PATCH",
             body: JSON.stringify({ title: data }),
