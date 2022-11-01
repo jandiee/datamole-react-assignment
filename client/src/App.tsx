@@ -11,10 +11,18 @@ import { ThemeProvider } from "./components/ThemeProvider";
 export const App: React.FC = () => {
     const [items, setItems] = useState<ItemObjectType[]>([]);
 
+    const sortItems = (items: ItemObjectType[]) => {
+        return items.sort((a, b) => Number(a.done) - Number(b.done) || b.createdAt - a.createdAt);
+    };
+
+    const handleSetItems = (callback: (prevItems: ItemObjectType[]) => ItemObjectType[]) => {
+        setItems((prev) => sortItems(callback(prev)));
+    };
+
     useEffect(() => {
         (async () => {
             const result = await fetch("http://localhost:3000/items").then((res) => res.json());
-            setItems(result);
+            handleSetItems(() => result);
         })();
     }, []);
 
@@ -22,10 +30,19 @@ export const App: React.FC = () => {
         <ThemeProvider>
             <Container>
                 <Layout>
-                    <Header onItemAdded={(newItem) => setItems((prev) => [...prev, newItem])}>To Do app</Header>
+                    <Header onItemAdded={(newItem) => handleSetItems((prev) => [...prev, newItem])}>To Do app</Header>
                     <List>
                         {items.map((item) => (
-                            <ListItem key={item.id} label={item.title} handleEdit={() => {}} handleRemoval={() => {}} />
+                            <ListItem
+                                key={item.id}
+                                item={item}
+                                onItemEdit={(itemSubmitted) =>
+                                    handleSetItems((prev) =>
+                                        prev.map((obj) => (obj.id === itemSubmitted.id ? itemSubmitted : obj))
+                                    )
+                                }
+                                onItemDelete={() => handleSetItems((prev) => prev.filter((obj) => obj.id !== item.id))}
+                            />
                         ))}
                     </List>
                     <Footer

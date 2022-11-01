@@ -1,7 +1,7 @@
 import { CheckIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Button from "../Button";
+import { RoundButton } from "../Button";
 import { Input } from "./Input";
 import { FormProps } from "./types";
 
@@ -39,12 +39,12 @@ export const Form = (props: FormProps): JSX.Element => {
     return (
         <StyledForm onSubmit={(e) => handleSubmit(e)} onReset={() => handleReset()}>
             <Input ref={inputRef} value={data} handleInputChange={(value: string) => setData(value)} />
-            <Button type={"submit"}>
+            <RoundButton type={"submit"}>
                 <CheckIcon />
-            </Button>
-            <Button type={"reset"}>
+            </RoundButton>
+            <RoundButton type={"reset"}>
                 <Cross1Icon />
-            </Button>
+            </RoundButton>
         </StyledForm>
     );
 };

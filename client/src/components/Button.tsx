@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    round?: boolean;
-};
-
 const StyledButton = styled.button`
     display: flex;
     justify-content: center;
@@ -14,8 +10,18 @@ const StyledButton = styled.button`
     cursor: pointer;
 `;
 
-const Button = ({ round, children, ...props }: ButtonProps) => {
+const Button = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
     return <StyledButton {...props}>{children}</StyledButton>;
 };
 
-export default Button;
+export const RoundButton = styled(Button)`
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: ${(props) => props.theme.colors.olive9};
+    background-color: ${(props) => props.theme.colors.grass9};
+    color: #fff;
+    width: 28px;
+    height: 28px;
+`;
+
+export const RectangleButton = styled(Button)``;
