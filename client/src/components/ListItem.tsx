@@ -52,6 +52,14 @@ export const ListItem: React.FC<LiteItemProp> = ({ item, onItemEdit, onItemDelet
         onItemEdit(item);
     };
 
+    const handleMarkDone = async () => {
+        const response = await fetch(`http://localhost:3000/items/${item.id}/mark-done`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+        }).then((res) => res.json());
+        onItemEdit(response);
+    };
+
     return (
         <>
             {isEditing ? (
@@ -64,7 +72,14 @@ export const ListItem: React.FC<LiteItemProp> = ({ item, onItemEdit, onItemDelet
             ) : (
                 <StyledDiv>
                     <Flexbox>
-                        <Checkbox {...checkboxProps} />
+                        <Checkbox
+                            {...checkboxProps}
+                            checked={item.done}
+                            onCheckedChange={(checked) => {
+                                if (checked) handleMarkDone();
+                            }}
+                            disabled={item.done}
+                        />
                         <Label>{item.title}</Label>
                     </Flexbox>
                     <VisibleOnHoverFlexbox>

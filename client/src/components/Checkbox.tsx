@@ -13,8 +13,10 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root)`
     align-items: center;
     justify-content: center;
     box-shadow: ${(props) => `0 1px 3px 0 ${props.theme.colors.blackA7}`};
+    opacity: ${(props) => (props.disabled ? "0.3" : 1)};
     &:hover {
         background-color: ${(props) => props.theme.colors.grass3};
+        cursor: ${(props) => (props.checked ? "not-allowed" : "pointer")};
     }
     &:focus {
         box-shadow: 0 4px 6px -1px black;

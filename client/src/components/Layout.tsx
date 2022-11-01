@@ -9,7 +9,8 @@ export const Layout = styled.main`
     width: 100%;
     margin: 0 30px;
     max-width: 600px;
-    min-height: 50vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 `;
