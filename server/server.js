@@ -6,13 +6,13 @@ const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const adapter = new JSONFileSync("db.json");
 const db = new LowSync(adapter);
-db.read();
 
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
 server.patch("/items/:itemId/mark-done", async (req, res, next) => {
+  db.read();
   const item = db.data.items.find(
     (item) => item.id === Number(req.params.itemId)
   );

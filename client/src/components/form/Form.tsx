@@ -18,9 +18,9 @@ export const Form = (props: FormProps): JSX.Element => {
         focusInput();
     }, []);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        props.handleSubmit(data);
+        await props.handleSubmit(data);
         setData(props.initialValue);
         focusInput();
     };

@@ -1,7 +1,7 @@
 import React from "react";
 
 export type FormProps = {
-    handleSubmit: (data: string) => void;
+    handleSubmit: (data: string) => Promise<void>;
     handleCancel: () => void;
     initialValue: string;
 };

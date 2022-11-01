@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Container } from "./components/Container";
+import EditableListItem from "./components/EditableListItem";
 import { Footer } from "./components/Footer";
 import { ItemObjectType } from "./components/form/types";
 import { Header } from "./components/Header";
 import { Layout } from "./components/Layout";
 import { List } from "./components/List";
-import { ListItem } from "./components/ListItem";
 import { ThemeProvider } from "./components/ThemeProvider";
 
 export const App: React.FC = () => {
@@ -19,21 +19,28 @@ export const App: React.FC = () => {
         setItems((prev) => sortItems(callback(prev)));
     };
 
+    const fetchItems = async () => {
+        const result = await fetch("http://localhost:3000/items").then((res) => res.json());
+        handleSetItems(() => result);
+    };
+
     useEffect(() => {
-        (async () => {
-            const result = await fetch("http://localhost:3000/items").then((res) => res.json());
-            handleSetItems(() => result);
-        })();
+        fetchItems();
     }, []);
 
     return (
         <ThemeProvider>
             <Container>
                 <Layout>
-                    <Header onItemAdded={(newItem) => handleSetItems((prev) => [...prev, newItem])}>To Do app</Header>
+                    <Header
+                        handleAddItem={() => fetchItems()}
+                        // onItemAdded={(newItem) => handleSetItems((prev) => [...prev, newItem])}
+                    >
+                        To Do app
+                    </Header>
                     <List>
                         {items.map((item) => (
-                            <ListItem
+                            <EditableListItem
                                 key={item.id}
                                 item={item}
                                 onItemEdit={(itemSubmitted) =>

@@ -2,10 +2,10 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { RoundButton } from "./Button";
 import { Form } from "./form";
-import { ItemObjectType } from "./form/types";
 
 type NewItemTogglableFormProps = {
-    onItemAdded: (newItem: ItemObjectType) => void;
+    onItemAdded: () => void;
+    // onItemAdded: (item: ItemObjectType) => void;
 };
 
 const NewItemTogglableForm = ({ onItemAdded }: NewItemTogglableFormProps) => {
@@ -21,7 +21,8 @@ const NewItemTogglableForm = ({ onItemAdded }: NewItemTogglableFormProps) => {
             body: JSON.stringify({ title: data, done: false }),
             headers: { "Content-Type": "application/json" },
         }).then((res) => res.json());
-        onItemAdded(response);
+        // onItemAdded(response);
+        onItemAdded();
     };
 
     return (
